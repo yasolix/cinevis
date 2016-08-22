@@ -54,13 +54,14 @@ $(dataset): $(videoDir)
 
 $(features): $(dataset) | $(artefactDirs)
 	#ffmpeg -y -an -i $(videoDir)/$(basename $(notdir $@)) -vcodec libxvid -q:v 1 $(recodedDir)/$(basename $(notdir $@)) > $(subst features,recoding, $(log)) 2>&1
-	$(FASTVIDEOFEAT) $(recodedDir)/$(basename $(notdir $@)) > $@ 2> $(log)
+	$(FASTVIDEOFEAT) $(videoDir)/$(basename $(notdir $@)) > $@ 2> $(log)
 
 $(features_sampled): $(features)
 	awk '{ if (rand() <= .01) print }' data/features/* > $@
 
 $(vocabs): $(features_sampled)
 	#cat $(features_sampled) | ../../src/gmm_train.py --gmm_ncomponents $(FV_GMM_NCOMPONENTS) --vocab $(call vocab, $@) > $(log) 2>&1
+	cp ../../examples/hollywood2_sample_vocabs/* data/vocabs/
 
 $(fisher_vectors): $(features) $(vocabs)
 	cat $(subst fisher_vectors,features, $@) | $(FV) --xpos 0 --ypos 1 --tpos 2 --knn $(FASTFV_KNN) $(FASTFV_QUANTIZER) $(FV_SPATIO_TEMPORAL_GRIDS) $(foreach g, $(vocabs), --vocab $(call vocab, $(g))) > $@ 2> $(log)
@@ -73,7 +74,7 @@ $(classification) : $(kernel)
 
 $(report): $(classification)
 	cat $(kernel) | ./test-global.py $(evalDir) $(clipFile) > $@
-	../report.py > $@
+	#../report.py > $@
 
 $(videoDir): | data/dataset
 	#downloadData.sh
