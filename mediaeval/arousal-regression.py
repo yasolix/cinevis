@@ -47,14 +47,10 @@ def splitindex(x,train_perc):
     test = x[r == 0]
     return train,test
 
-scores_rbf = list()
-scores_rstd = list()
-scores_lin = list()
-scores_lstd = list()
-scores_poly = list()
-scores_pstd = list()
+scores = list()
+scores_std = list()
 
-for i in xrange(10):
+for i in xrange(4):
 	trindex, tsindex = splitindex(clip_id,0.85)
 	
 	X=features[trindex]
@@ -75,18 +71,31 @@ for i in xrange(10):
         mse_lin = mean_squared_error(ty, y_lin)
         mse_poly = mean_squared_error(ty, y_poly)
 
-	scores_rbf.append(np.mean(mse_rbf))
-	scores_rstd.append(np.std(mse_rbf))
+	scores.append(np.mean(mse_rbf))
+	scores_std.append(np.std(mse_rbf))
 
-	scores_lin.append(np.mean(mse_lin))
-	scores_lstd.append(np.std(mse_lin))
-
-	scores_poly.append(np.mean(mse_poly))
-	scores_pstd.append(np.std(mse_poly))
+	print
 
 ###############################################################################
 # look at the results
+	X=tsindex
 
-print 'Mean Squared Error of rbf is %.3f and std is %.3f' % (np.mean(scores_rbf) , np.mean(scores_rstd))
-print 'Mean Squared Error of lin is %.3f and std is %.3f' % (np.mean(scores_lin) , np.mean(scores_lstd))
-print 'Mean Squared Error of poly is %.3f and std is %.3f' % (np.mean(scores_poly) , np.mean(scores_pstd))
+	fig = plt.figure(figsize=(10, 10))
+	plt.scatter(X, ty, c='k', label='data')
+	plt.hold('on')
+	plt.scatter(X, y_rbf, c='g', label='RBF model')
+	plt.scatter(X, y_lin, c='r', label='Linear model')
+	plt.scatter(X, y_poly, c='b', label='Polynomial model')
+
+	plt.plot(X, ty, c='k', label='data')
+	plt.plot(X, y_rbf, c='g', label='RBF model')
+	plt.plot(X, y_lin, c='r', label='Linear model')
+	plt.plot(X, y_poly, c='b', label='Polynomial model')
+	plt.xlabel('data')
+	plt.ylabel('target')
+	plt.title('Support Vector Regression')
+	plt.legend()
+	plt.show()
+
+print np.mean(scores)
+print np.mean(scores_std)

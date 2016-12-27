@@ -54,7 +54,7 @@ scores_lstd = list()
 scores_poly = list()
 scores_pstd = list()
 
-for i in xrange(10):
+for i in xrange(4):
 	trindex, tsindex = splitindex(clip_id,0.85)
 	
 	X=features[trindex]
@@ -86,7 +86,25 @@ for i in xrange(10):
 
 ###############################################################################
 # look at the results
+	a="X=tsindex
 
-print 'Mean Squared Error of rbf is %.3f and std is %.3f' % (np.mean(scores_rbf) , np.mean(scores_rstd))
-print 'Mean Squared Error of lin is %.3f and std is %.3f' % (np.mean(scores_lin) , np.mean(scores_lstd))
-print 'Mean Squared Error of poly is %.3f and std is %.3f' % (np.mean(scores_poly) , np.mean(scores_pstd))
+	fig = plt.figure(figsize=(10, 10))
+	plt.scatter(X, ty, c='k', label='data')
+	plt.hold('on')
+	plt.scatter(X, y_rbf, c='g', label='RBF model')
+	plt.scatter(X, y_lin, c='r', label='Linear model')
+	plt.scatter(X, y_poly, c='b', label='Polynomial model')
+
+	plt.plot(X, ty, c='k', label='data')
+	plt.plot(X, y_rbf, c='g', label='RBF model')
+	plt.plot(X, y_lin, c='r', label='Linear model')
+	plt.plot(X, y_poly, c='b', label='Polynomial model')
+	plt.xlabel('data')
+	plt.ylabel('target')
+	plt.title('Support Vector Regression')
+	plt.legend()
+	plt.show()
+        "
+print 'Mean Squared Error of rbf is %f and std is %f' % np.mean(scores_rbf) % np.mean(scores_rstd)
+print 'Mean Squared Error of lin is %f and std is %f' % np.mean(scores_lin) % np.mean(scores_lstd)
+print 'Mean Squared Error of poly is %f and std is %f' % np.mean(scores_poly) % np.mean(scores_pstd)
