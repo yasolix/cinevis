@@ -1,0 +1,32 @@
+#!/bin/bash
+#ffmpeg -loglevel error -i After_The_Rain.mp4 -r 1 -f image2 movframes/After_The_Rain.mp4-%05d.jpg
+ffmpeg -loglevel error -i Attitude_Matters.mp4 -r 1 -f image2 movframes/Attitude_Matters.mp4-%05d.jpg
+ffmpeg -loglevel error -i Barely_legal_stories.mp4 -r 1 -f image2 movframes/Barely_legal_stories.mp4-%05d.jpg
+ffmpeg -loglevel error -i Between_Viewings.mp4 -r 1 -f image2 movframes/Between_Viewings.mp4-%05d.jpg
+ffmpeg -loglevel error -i Big_Buck_Bunny.mp4 -r 1 -f image2 movframes/Big_Buck_Bunny.mp4-%05d.jpg
+ffmpeg -loglevel error -i Chatter.mp4 -r 1 -f image2 movframes/Chatter.mp4-%05d.jpg
+ffmpeg -loglevel error -i Cloudland.mp4 -r 1 -f image2 movframes/Cloudland.mp4-%05d.jpg
+ffmpeg -loglevel error -i Damaged_Kung_Fu.mp4 -r 1 -f image2 movframes/Damaged_Kung_Fu.mp4-%05d.jpg
+ffmpeg -loglevel error -i Decay.mp4 -r 1 -f image2 movframes/Decay.mp4-%05d.jpg
+ffmpeg -loglevel error -i Elephant_s_Dream.mp4 -r 1 -f image2 movframes/Elephant_s_Dream.mp4-%05d.jpg
+ffmpeg -loglevel error -i First_Bite.mp4 -r 1 -f image2 movframes/First_Bite.mp4-%05d.jpg
+ffmpeg -loglevel error -i Full_Service.mp4 -r 1 -f image2 movframes/Full_Service.mp4-%05d.jpg
+ffmpeg -loglevel error -i Islands.mp4 -r 1 -f image2 movframes/Islands.mp4-%05d.jpg
+ffmpeg -loglevel error -i Lesson_Learned.mp4 -r 1 -f image2 movframes/Lesson_Learned.mp4-%05d.jpg
+ffmpeg -loglevel error -i Norm.mp4 -r 1 -f image2 movframes/Norm.mp4-%05d.jpg
+ffmpeg -loglevel error -i Nuclear_Family.mp4 -r 1 -f image2 movframes/Nuclear_Family.mp4-%05d.jpg
+ffmpeg -loglevel error -i On_time.mp4 -r 1 -f image2 movframes/On_time.mp4-%05d.jpg
+ffmpeg -loglevel error -i Origami.mp4 -r 1 -f image2 movframes/Origami.mp4-%05d.jpg
+ffmpeg -loglevel error -i Parafundit.mp4 -r 1 -f image2 movframes/Parafundit.mp4-%05d.jpg
+ffmpeg -loglevel error -i Payload.mp4 -r 1 -f image2 movframes/Payload.mp4-%05d.jpg
+ffmpeg -loglevel error -i Riding_The_Rails.mp4 -r 1 -f image2 movframes/Riding_The_Rails.mp4-%05d.jpg
+ffmpeg -loglevel error -i Sintel.mp4 -r 1 -f image2 movframes/Sintel.mp4-%05d.jpg
+ffmpeg -loglevel error -i Spaceman.mp4 -r 1 -f image2 movframes/Spaceman.mp4-%05d.jpg
+ffmpeg -loglevel error -i Superhero.mp4 -r 1 -f image2 movframes/Superhero.mp4-%05d.jpg
+ffmpeg -loglevel error -i Tears_of_Steel.mp4 -r 1 -f image2 movframes/Tears_of_Steel.mp4-%05d.jpg
+ffmpeg -loglevel error -i The_room_of_franz_kafka.mp4 -r 1 -f image2 movframes/The_room_of_franz_kafka.mp4-%05d.jpg
+ffmpeg -loglevel error -i The_secret_number.mp4 -r 1 -f image2 movframes/The_secret_number.mp4-%05d.jpg
+ffmpeg -loglevel error -i To_Claire_From_Sonny.mp4 -r 1 -f image2 movframes/To_Claire_From_Sonny.mp4-%05d.jpg
+ffmpeg -loglevel error -i Wanted.mp4 -r 1 -f image2 movframes/Wanted.mp4-%05d.jpg
+ffmpeg -loglevel error -i You_Again.mp4 -r 1 -f image2 movframes/You_Again.mp4-%05d.jpg
+
