@@ -27,3 +27,22 @@ For each of these images, several general purpose visual features are provided. 
 - VGG16 fc6 layer output (fc6)
 
 Features are stored in text files, one file by image and by feature type. For example, "After_The_Rain-00001_acc.txt" contains Auto Color Correlogram features (acc) for the 1st frame of After_The_Rain movie. Each feature file contains one line where feature values are separated by commas.
+
+LIRE demo
+Set of GlobalFeatures: 
+ACCID
+JCD
+AutoColorCorrelogram
+ColorLayout
+PHOG
+CEDD
+SimpleColorHistogram
+Gabor
+OpponentHistogram
+JointHistogram
+COMO
+LuminanceLayout
+Tamura
+FCTH
+ScalableColor
+EdgeHistogram
