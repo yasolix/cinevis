@@ -30,3 +30,17 @@ ffmpeg -loglevel error -i To_Claire_From_Sonny.mp4 -r 1 -f image2 movframes/To_C
 ffmpeg -loglevel error -i Wanted.mp4 -r 1 -f image2 movframes/Wanted.mp4-%05d.jpg
 ffmpeg -loglevel error -i You_Again.mp4 -r 1 -f image2 movframes/You_Again.mp4-%05d.jpg
 
+ffmpeg -loglevel error -i MEDIAEVAL17_00.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_00/MEDIAEVAL17_00.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_01.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_01/MEDIAEVAL17_01.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_02.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_02/MEDIAEVAL17_02.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_03.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_03/MEDIAEVAL17_03.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_04.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_04/MEDIAEVAL17_04.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_05.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_05/MEDIAEVAL17_05.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_06.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_06/MEDIAEVAL17_06.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_07.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_07/MEDIAEVAL17_07.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_08.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_08/MEDIAEVAL17_08.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_09.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_09/MEDIAEVAL17_09.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_10.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_10/MEDIAEVAL17_10.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_11.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_11/MEDIAEVAL17_11.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_12.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_12/MEDIAEVAL17_12.mp4-%05d.jpg
+ffmpeg -loglevel error -i MEDIAEVAL17_13.mp4 -r 1 -f image2 testsetframes/MEDIAEVAL17_13/MEDIAEVAL17_13.mp4-%05d.jpg
