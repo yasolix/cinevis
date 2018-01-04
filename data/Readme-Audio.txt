@@ -1,0 +1,9 @@
+Thank you for downloading LIRIS-ACCEDE dataset.
+This file contains audio features for the LIRIS-ACCEDE continuous part that is used for the MEDIAEVAL 2017 Emotional Impact of Movies task.
+For each of the 30 movies, consecutive ten seconds-segments sliding over the whole movie with a shift of 5 seconds are considered. Each segment has its csv file whose name indicates the movie and the identifier of the segment, starting from 0. This id corresponds to the one used for the segment annotations provided in files "MEDIAEVAL17-DevSet-Valence_Arousal-annotations.zip" and "MEDIAEVAL17-DevSet-Fear-annotations.zip".
+
+The audio features have been extracted using openSmile toolbox (http://audeering.com/technology/opensmile/) [1]. The default configuration "emobase2010.conf" was used. It allows the computation of 1 582 features which result from a base of 34 low-level descriptors (LLD) with 34 corresponding delta coefficients appended, and 21 functionals applied to each of these 68 LLD contours (1 428 features).
+In addition, 19 functionals are applied to the 4 pitch-based LLD and their four delta coefficient contours (152 features). Finally the number of pitch onsets (pseudo syllables) and the total duration of the input are appended (2 features).
+Details can be found in openSmile book (http://www.audeering.com/research-and-open-source/files/openSMILE-book-latest.pdf).
+
+[1] Florian Eyben, Felix Weninger, Florian Gross, Björn Schuller: "Recent Developments in openSMILE, the Munich Open-Source Multimedia Feature Extractor", In Proc. ACM Multimedia (MM), Barcelona, Spain, ACM, ISBN 978-1-4503-2404-5, pp. 835-838, October 2013. doi:10.1145/2502081.2502224

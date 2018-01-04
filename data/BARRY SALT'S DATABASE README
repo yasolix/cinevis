@@ -1,0 +1,6 @@
+
+BARRY SALT'S DATABASE
+
+CAMERA MOVEMENT DATA | SHOT SCALE DATA | AVERAGE SHOT LENGTH DATA
+
+All the data in these tables is for the complete length of the films, taken between the director credit and the end title. If there is a pre-credit sequence longer than one minute, this is added on to the data. Shots running under the main titles are NOT included, but any title included in the main body of the film is counted as a shot. In the table of ASLs, their length is calculated at 24 frames per second for sound films, and silent films are calculated at the projection speed that gives natural movement. In the 'Scope' column, 's' means the intended projection aspect ratio of the film is 1:2.35 or 1:2.2. 't' means that it is a 'made for television' movie, 'v' means that it went straight to video, 'a' means that it is an animated film, 'd' means that it is a documentary. The 'Country' column only contains an entry if the film was entirely financed from one country, and the 'Studio' column only contains an entry if one major studio financed the film. The figures for camera movement and Scale of Shot are not the total numbers for those films, but normalized to the number per 500 shots.
