@@ -1,0 +1,12 @@
+
+First copy the files to be fused to fusedir
+
+Run the command below, it will generate teams/fused.txt
+
+$ python decision-level-fusion.py 
+
+After that run below to genrate the MSE, PCC scores
+
+$ python compute_results_subtask1.py
+
+

@@ -1,0 +1,2 @@
+run	valence_mse	valence_r
+fused.txt	0.186993684217	0.0871089198944

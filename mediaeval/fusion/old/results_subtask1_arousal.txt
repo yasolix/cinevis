@@ -1,0 +1,2 @@
+run	arousal_mse	arousal_r
+fused.txt	0.116243241415	0.227406673755
