@@ -1,0 +1,16 @@
+run	valence_mse	valence_r
+fused_audio_face_visual_deep_lowlevel.txt	0.200275849936	0.0877032127218
+fused_audio_visual_deep.txt	0.19490920508	0.134799743809
+fused_deep_lowlevel.txt	0.202637395687	0.0788896559745
+fused_audio_lowlevel.txt	0.2309159489	-0.0310717942082
+fused_audio_face_visual_deep.txt	0.196732224384	0.13495981648
+fused_audio_visual.txt	0.205352028638	0.039722021871
+fused_lowlevel_visual_deep.txt	0.191116641725	0.0957640385976
+fused_face_visual.txt	0.19126196062	0.0565101651452
+fused_face_lowlevel.txt	0.215793095091	-0.0175219860264
+fused_audio_deep.txt	0.208031582125	0.151626299394
+fused_audio_face.txt	0.223040092109	0.0346408589134
+fused_face_deep.txt	0.193616379104	0.19940584002
+fused_lowlevel_visual.txt	0.200471066434	0.00976582599337
+fused_face_visual_deep.txt	0.185937483186	0.158486723473
+fused_deep_visual.txt	0.178941297617	0.163889682574

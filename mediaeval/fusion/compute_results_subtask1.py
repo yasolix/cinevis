@@ -34,6 +34,7 @@ results_arousal_mse = []
 results_valence_pearson = []
 results_arousal_pearson = []
 
+
 files = os.listdir(dir_results)
 for fname in files:
 	if fname.find('.txt') >=0:

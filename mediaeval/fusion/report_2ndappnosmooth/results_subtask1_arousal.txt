@@ -1,0 +1,16 @@
+run	arousal_mse	arousal_r
+fused_audio_face_visual_deep_lowlevel.txt	0.133331938039	-0.014082106679
+fused_audio_visual_deep.txt	0.133462085805	0.0407934260114
+fused_deep_lowlevel.txt	0.128051512557	-0.00444266807434
+fused_audio_lowlevel.txt	0.138207711754	-0.0575407445026
+fused_audio_face_visual_deep.txt	0.135507503751	0.0144016446096
+fused_audio_visual.txt	0.139421320515	0.00782690921981
+fused_lowlevel_visual_deep.txt	0.128485705346	0.0371625894801
+fused_face_visual.txt	0.139036463422	0.027594396936
+fused_face_lowlevel.txt	0.137771914277	-0.0639190684242
+fused_audio_deep.txt	0.13554785071	0.0100613161476
+fused_audio_face.txt	0.146219549834	-0.0744106198145
+fused_face_deep.txt	0.135306461684	0.00015965808077
+fused_lowlevel_visual.txt	0.132192627717	0.011794763675
+fused_face_visual_deep.txt	0.133595740439	0.0582251473541
+fused_deep_visual.txt	0.130232041642	0.0894708397299

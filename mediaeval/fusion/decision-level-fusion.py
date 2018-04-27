@@ -66,6 +66,19 @@ def mean_fuse(dict_val,dict_ar,filename='fused.txt'):
             f.write(str(fusedval[i])+' '+str(fusedar[i])+os.linesep)
     f.close()   
 
+def mean_weighted_fuse(dict_val,dict_ar,weights=[1./4, 3./4],filename='fused_weighted.txt'):
+    f = open(dir_results+filename,'w')
+    for test in testset:
+        #print(test)
+        f.write(test+os.linesep)
+        minv = min([ len(dict_val[i][test]) for i in dict_val])
+        fusedval = np.average([ dict_val[i][test][0:minv] for i in dict_val],axis=1, weights=weights)
+
+        fusedar = np.average([ dict_ar[i][test][0:minv] for i in dict_ar],axis=1, weights=weights)
+        for i in range(len(fusedval)):
+            f.write(str(fusedval[i])+' '+str(fusedar[i])+os.linesep)
+    f.close()
+
 
 # First copy the files to be fused to  fusedir
 # Then run 
@@ -74,6 +87,8 @@ dict_val,dict_ar = read_valence_arousal()
 #write to new file, give a distinctive name with a fuse method
 mean_fuse(dict_val,dict_ar,filename='fused.txt')
 
+#write to new file
+mean_weighted_fuse(dict_val,dict_ar)
 
 
 
