@@ -10,6 +10,33 @@ pathmovies = "/home/yt/Desktop/cvpr2014/repro/mediaeval/data/dataset/ContinuousL
 movframes = "/home/yt/Desktop/cvpr2014/repro/mediaeval/data/dataset/movframes/"
 testsetframes = "/home/yt/Desktop/cvpr2014/repro/mediaeval/data/dataset/testsetframes/"
 
+pathmovies = "/media/yt/Seagate Expansion Drive/2018laptop/ContinuousLIRIS-ACCEDE/continuous-movies/"
+movframes = "/media/yt/Seagate Expansion Drive/2018laptop/cvpr2014/repro/mediaeval/data/dataset/movframes/"
+testsetframes = "/media/yt/Seagate Expansion Drive/2018laptop/cvpr2014/repro/mediaeval/data/dataset/testsetframes/"
+
+
+def findFaceEncodings(filename):
+    # Load the jpg file into a numpy array
+    face_image = face_recognition.load_image_file(filename)
+    faces_encodings = face_recognition.face_encodings(face_image)
+    return  faces_encodings
+
+def findFaceLandmarks(filename):
+    # Load the jpg file into a numpy array
+    face_image = face_recognition.load_image_file(filename)
+    height, width = face_image.shape[0], face_image.shape[1]
+    face_landmarks_list = face_recognition.face_landmarks(face_image)
+
+    lmarklist = []
+    for face_landmarks in face_landmarks_list:
+        lmarklist=[]
+        for key,mark in face_landmarks.items():
+            for point in mark:
+                lmarklist.append(point[0]/width)
+                lmarklist.append(point[1]/height)
+
+    return lmarklist
+
 def findFace(filename):
     # Load the jpg file into a numpy array
     image = face_recognition.load_image_file(filename)
@@ -18,13 +45,20 @@ def findFace(filename):
     top, right, bottom, left = 0, 0, 0, 0
 
     # Find all the faces in the image using a pre-trained convolutional neural network.
-    face_locations = face_recognition.face_locations(image, number_of_times_to_upsample=0, model="cnn")
-    for face_location in face_locations:
+    face_locations = face_recognition.face_locations(image, number_of_times_to_upsample=1, model="cnn")
+    numfaces = len(face_locations)
+
+    if numfaces>0:
+        top, right, bottom, left = face_locations[0]
+
+    #for face_location in face_locations:
         # Print the location of each face in this image
-        top, right, bottom, left = face_location
+    #    top, right, bottom, left = face_location
 
     #returning the face information , (the last one if multiple face exist)
-    return [len(face_locations), top, left, bottom, right, hframe, wframe]
+    result = [hframe, wframe, numfaces, top / hframe, left / wframe, bottom / hframe, right / wframe]
+    #print(result)
+    return result
 
 
 
@@ -208,8 +242,7 @@ def facesinbatch(moviename):
         ff.write('\n')
     ff.close()
 
-
-def facesinmovie(moviename,istest=False,outfolder='/home/yt/cinevis/data/dlibfaces/'):
+def encodingsinmovie(moviename,istest=False,outfolder='/home/yt/cinevis/data/dlibfaces/'):
     if (istest):
         files = sorted(glob.glob(testsetframes + moviename +'/*.jpg'))
     else:
@@ -229,8 +262,39 @@ def facesinmovie(moviename,istest=False,outfolder='/home/yt/cinevis/data/dlibfac
     facefile = outfolder+moviename+'-faces.txt'
     pd.to_csv(facefile, sep=' ', header=True, index_label='id')
 
+def facesinmovie(moviename,istest=False,outfolder='/tmp/dlibfaceslandmarks/'):
+    if (istest):
+        files = sorted(glob.glob(testsetframes + moviename +'/*.jpg'))
+    else:
+        files = sorted(glob.glob(movframes + moviename + '*.jpg'))
 
-def find_facial_features_in_picture(filename = None, model=None):
+
+    facelist = []
+    for idx, f in enumerate(files):
+        #print(idx,f)
+        fl = findFace(f)
+        el = findFaceLandmarks(f)
+        print( len(fl), len(el))
+        if len(el) == 0:
+            el = [0 for i in range(144)]
+        #print(fl,el)
+        facelist.append(fl+el)
+
+    #[hframe, wframe, numfaces, top / hframe, left / wframe, bottom / hframe, right / wframe]
+
+    cols = ["hframe", "wframe","noface", "top", "left", "bottom", "right"]
+    numcols = [str(i) for i in range(144)]
+
+    df = pandas.DataFrame(facelist , columns = cols+numcols)
+    #df = pandas.DataFrame(facelist)
+
+    # Now you have a csv with columns and index:
+    #facefile = outfolder+moviename+'-faces.txt'
+    facefile = outfolder + moviename + '-faces-landmarks.txt'
+    df.to_csv(facefile, sep=' ', header=True, index_label='id')
+
+
+def find_facial_features_in_picture(filename = None, model="cnn"):
 
     if (filename != None ):
         # Load the jpg file into a numpy array
@@ -273,7 +337,20 @@ def find_facial_features_in_picture(filename = None, model=None):
         for facial_feature in facial_features:
             d.line(face_landmarks[facial_feature], width=5)
 
-    pil_image.show()
+    if len(face_landmarks_list):
+        #pil_image.show()
+        fname = filename.split('/')[-1]
+        pil_image.save("/tmp/"+fname+"facial.png")
+
+
+
+def doitinmovie(moviename,function=findFace ,istest=False,outfolder='/home/yt/cinevis/data/dlibfaceslandmarks/'):
+    if (istest):
+        files = sorted(glob.glob(testsetframes + moviename +'/*.jpg'))
+    else:
+        files = sorted(glob.glob(movframes + moviename + '*.jpg'))
+    for idx, f in enumerate(files):
+        function(f)
 
 
 ### testing functions
@@ -285,11 +362,11 @@ filename = movframes + 'Decay' + '.mp4-02534.jpg' #'.mp4-00625.jpg' # '.mp4-0027
 
 # HOG models
 #find_face_in_picture(filename)
-#find_facial_features_in_picture(filename)
+#find_facial_features_in_picture(filename,model=none)
 
 #CNN models
-find_faces_in_picture_cnn(filename)
-find_facial_features_in_picture(filename, model='cnn')
+#find_faces_in_picture_cnn(filename)
+#find_facial_features_in_picture(filename, model='cnn')
 
 #makeupFace()
 #facesinbatch('Islands')
@@ -298,7 +375,26 @@ find_facial_features_in_picture(filename, model='cnn')
 #facesinbatch('Chatter')
 #facesinbatch('Attitude_Matters')
 
-#facesinmovie('After_The_Rain')
+#facesinmovie('Chatter.mp4')
+
+#findFaceandLandMarks(filename)
+
+#print(encodings)
+
+#doitinmovie("Chatter.mp4",find_facial_features_in_picture)
+#doitinmovie("Cloudland",find_facial_features_in_picture)
+
+#doitinmovie("The_room_of_franz_kafka")
+#facesinmovie("The_room_of_franz_kafka")
+
+#facesinmovie('The_secret_number.mp4')
+
+#facesinmovie('After_The_Rain.mp4')
+
+# remaining = ['The_secret_number_Arousal','To_Claire_From_Sonny', 'Wanted', 'You_Again']
+# for m in remaining:
+#     print(m)
+#     facesinmovie(m)
 
 '''
 movies = sorted([os.path.basename(x) for x in glob.glob(pathmovies+'*')])
@@ -312,5 +408,23 @@ testmovies = sorted([os.path.basename(x) for x in glob.glob(testsetframes+'*')])
 print(testmovies)
 for m in testmovies:
     print(m)
-    facesinmovie(m, istest=True,outfolder='/home/yt/Desktop/cvpr2014/repro/mediaeval/data/dataset/dlibfaces/')
+    facesinmovie(m, istest=True,outfolder='/home/yt/Desktop/cvpr2014/repro/mediaeval/data/dataset/dlibfaceslandmarks/')
+'''
+
+'''
+##Faces
+Cloudland
+Norm
+Superhero
+
+### Fear and Faces
+After_The_Rain
+Barely_legal_stories
+Chatter
+Damaged_Kung_Fu
+Payload
+Sintel
+Tears_of_Steel
+The_secret_number
+
 '''
